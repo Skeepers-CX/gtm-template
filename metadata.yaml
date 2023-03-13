@@ -1,5 +1,5 @@
 homepage: "https://skeepers.io/en/"
 documentation: "https://www.example.com/documentation"
 versions:
-  - sha: 8ca16968a4b5a3e588f88d61cf6280653e618709
+  - sha: 29827f3cd8db59d8ce7d76f647138b0bca024e61
     changeNotes: Initial Version
