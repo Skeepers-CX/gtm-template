@@ -276,7 +276,7 @@ switch (data.event) {
      });
      break;
    case ('order'):
-     payload.order_stats = 0;
+     payload.order_status = 0;
      payload.order_channel = 2;
      callInWindow('skp', 'data', {
        "events": [{
