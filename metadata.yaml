@@ -1,5 +1,7 @@
 homepage: "https://skeepers.io/en/"
-documentation: "https://www.example.com/documentation"
+documentation: "https://github.com/Skeepers-CX/gtm-template"
 versions:
+  - sha: 4f8a042fe32724de5da6d9c3c5ede51d58dee295
+    changeNotes: Product information can be also tracked
   - sha: 29827f3cd8db59d8ce7d76f647138b0bca024e61
     changeNotes: Initial Version
