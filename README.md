@@ -1,47 +1,75 @@
-# GTM Template for Skeepers SDK
+Overview
+========
 
-Custom template for client use on Google Tag Management solution
+This guide provides how to use and install Skeepers' GTM template.
 
-## How to use
+Pre-requisites
+==============
 
-The template is defined by the template.tpl file, there you will find the associated info, template parameters, the code used (Templates use a sandboxed javascript, full details on how to use [here](https://developers.google.com/tag-platform/tag-manager/templates/sandboxed-javascript)), web permissions and tests.
+-   Access to Google Tag Manager: Ensure you have access to your website's GTM account:
+-   Site Id: you should have received a site ID from you Skeepers' contact, if you can't find it don't hesitate to ask for it;
+-   Data collection endpoint (formed by *swa. +* client domain, the same CNAME you had to create)*.* It will default point to swa.datap.skeepers.io.
 
-If you want to modify the template you must 
+Steps to Install Skeepers tracker via GTM
+=========================================
 
-- Upload the template.tpl file to google tag manager 
-- Make the necessary modifications
+We split the installation in different sections, first add a template, than to configure the tags.
 
-It is important to preserve existing functions when editing the template. A sandboxed version of javascript is used for the code, full details [here](https://developers.google.com/tag-platform/tag-manager/templates/sandboxed-javascript)
+Adding a GTM template
+---------------------
 
-## Template modifications for clients
+1.  Access GTM Account
 
-Once you have modified and tested the template file you have to publish for client use. To do this update the metadata.yaml as prescribed on [google documentation](https://developers.google.com/tag-platform/tag-manager/templates/gallery) 
+    1.  Sign in to your Google Tag Manager account
 
-The metadata.yaml file is used to determine which version of your template to use in the gallery. To publish new versions, you need to add the change number (SHA number) to the versions section of your metadata.yaml file.
+2.  Navigate to the Workspace
 
-1. Locate the commit that includes the changes that you want to push, and copy the SHA number. An easy way to do this is in GitHub is to go to a commit view and click the clipboard icon (clipboard icon). This will copy the entire SHA number to your clipboard.
-2. Add a new sha entry to the top of your versions list in metadata.yaml. (See the example below.)
-3. Add changeNotes to briefly describe changes contained in this new version. You can create multiline comments, if desired. (See the example below.)
-4. Commit the change to metadata.yaml and your update will appear in the gallery typically within 2 to 3 days.
+    1.  Click on the relevant workspace where you want to add the Skeepers tracker
 
-This example demonstrates how to add new version information including the SHA number and change notes:
+3.  Add a New Tag
 
-```
-homepage: "https://www.example.com"
-documentation: "https://www.example.com/documentation"
-versions:
-# Latest version
-    - sha: 5f02a788b90ae804f86b04aa24af8937e567874c
-      changeNotes: |2
-        Fix bug with the whatsamajig.
-        Improve menu options.
-        Update API calls.
-# Older versions
-    - sha: 5f02a788b90ae804f86b04aa24af8937e567874b
-      changeNotes: Adds eject button.
-    - sha: 5f02a788b90ae804f86b04aa24af8937e567874a
-      changeNotes: Initial release.
-```
+    1.  In the workspace, go to "Tags" and click on "New."
+    2.  Select "Tag Configuration."
 
-  Important: Every published version of the template should be included in the versions section ordered in reverse chronological order, (most recent to oldest).
-  Note: Not every incremental commit needs to be included as a version change to the Community Templates Gallery. For example, if you make incremental changes in commits 1, 2, and 3, and the final version is commit 4, you should have just one entry for commit 4 that includes all changes from commits 1, 2, and 3.
+4.  Choose a Tag Type
+
+    1.  Click on "Discover more tag types in the Community Template Gallery."
+    2.  Search for "Skeepers" in the Community Template Gallery
+
+5.  Add Skeepers Template
+
+    1.  Click on the Skeepers template to view its details
+    2.  Click "Add to Workspace" to add it to your GTM workspace
+
+Adding the tags
+---------------
+
+You should add a tag for each of the events you want to track, that means at the end of the configuration you should have 4 tags, **pageview**, **add to cart**, **cart** and **order**. They will share a common configuration, and specific configurations.
+
+1.  Add a Skeepers Tag
+
+    1.  Add the "Site Id" in the required field
+    2.  Add the "Endpoint" in the required fied
+    3.  Define the event you will add
+    4.  Add the necessary information, using available variables or adding new ones as necessary
+
+2.  Trigger Configuration:
+
+    1.  Set the trigger for the tag to fire.
+
+3.  Repeat the process for the different events
+
+4.  Preview and Debug
+
+    1.  Use the "Preview" mode in GTM to test if the Skeepers tag fires correctly on your website.
+    2.  Debug any issues that arise during testing before publishing changes.
+    3.  To ensure events are being properly uploaded follow the current workflow. Open the developer console, go to the network tab. Filter for "collect?" on the type "Fetch/XHR". You will be able to see what information was sent, our interest will be on the events part. Make sure the event name is correct and the payload have the correspondent fields, it important to notice that extra fields might be present in the payload, they are automatic filled by our SDK and can be ignored.
+
+5.  Save and Submit
+
+    1.  Once the configuration is complete, click "Save" to save the tag configuration.
+    2.  After saving, click on "Submit" to publish your changes to GTM.
+
+6.  Publish Changes
+
+    1.  Once you've confirmed that the tag works as expected, click on "Publish" to make the changes live on your website.
